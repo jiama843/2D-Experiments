@@ -2,13 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+using Stdlib;
+
 public class PlayerController : MonoBehaviour {
-
-	//public bool isGrounded;
-	//public bool canDoubleJump;
-
-	private const float RIGHT = 1.0f;
-	private const float LEFT = -1.0f;
 
 	private GameObject player;
 	private GameObject weapon;
@@ -24,11 +20,18 @@ public class PlayerController : MonoBehaviour {
 	public float initialJumpVelocity = 5.0f;
 
 	// Use this for initialization
+	void awake(){
+
+		QualitySettings.vSyncCount = 0;
+		Application.targetFrameRate = 60;
+
+	}
+
 	void Start () {
 
 		player = gameObject;
-		playerStats = player.GetComponent<PlayerStats> ();
 
+		playerStats = player.GetComponent<PlayerStats> ();
 		weapon = playerStats.getWeapon ();
 		speed = playerStats.getSpeed ();
 
@@ -74,11 +77,11 @@ public class PlayerController : MonoBehaviour {
 
 		if (playerMove.isRight()) {
 
-			playerShoot.shoot (RIGHT);
+			playerShoot.shoot (Direction.RIGHT);
 
 		} else {
 
-			playerShoot.shoot (LEFT);
+			playerShoot.shoot (Direction.LEFT);
 
 		}
 
@@ -91,9 +94,31 @@ public class PlayerController : MonoBehaviour {
 
 	}
 
+	public void getHit(int attack){
+	
+		PlayerInvulnerability playerInv = player.GetComponent<PlayerInvulnerability> ();
+		playerInv.setInvincible (1.0f);
+	
+		takeDamage (attack);
+
+	}
+
+	public void knockback(float xSpeed, float ySpeed){
+
+		float direction = playerMove.getDirection ();
+		playerMove.knockback (xSpeed * direction, ySpeed);
+
+	}
+
+	public void takeDamage(int attack){
+
+		//Take damage script
+
+	}
+
 	public void destroy(){
 
-
+		Destroy (player);
 
 	}
 

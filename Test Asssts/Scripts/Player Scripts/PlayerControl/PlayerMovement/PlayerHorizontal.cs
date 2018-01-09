@@ -2,13 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+
 public class PlayerHorizontal {
+
+	private GameObject player;
 
 	private Transform playerTransform;
 
 	private Rigidbody2D playerRBody;
-
-	private const float FPS = 60.0f;
 
 	private float speed;
 
@@ -16,6 +18,7 @@ public class PlayerHorizontal {
 
 	public PlayerHorizontal(GameObject player, float speed){
 
+		this.player = player;
 		this.playerTransform = player.GetComponent<Transform> ();
 		this.playerRBody = player.GetComponent<Rigidbody2D> ();
 		this.speed = speed;
@@ -39,6 +42,13 @@ public class PlayerHorizontal {
 		}
 
 		playerTransform.localPosition = playerPos;
+
+	}
+
+	public void dash(float direction){
+
+		PlayerDash playerDash = player.GetComponent<PlayerDash> ();
+		playerDash.dash (direction);
 
 	}
 

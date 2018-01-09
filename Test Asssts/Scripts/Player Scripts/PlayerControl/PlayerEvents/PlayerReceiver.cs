@@ -22,9 +22,21 @@ public class PlayerReceiver : MonoBehaviour {
 
 		} else if (col.collider.tag == "Projectile") {
 
+			ProjectileProvider projP = col.collider.gameObject.GetComponent<ProjectileProvider> ();
+			int attack = projP.getAttack ();
+
+			playerControl.knockback (0.0f, 0.0f);
+			//playerControl.destroy ();
+
+			playerControl.getHit (attack);
 
 		} else if (col.collider.tag == "Boss") {
 
+			EnemyProvider enemyP = col.collider.gameObject.GetComponent<EnemyProvider> ();
+			// NEEDS TO BE IMPLEMENTED ~ int attack = enemyP.getAttack ();
+
+			playerControl.knockback (0.0f, 0.0f);
+			playerControl.getHit (0);
 
 		}
 

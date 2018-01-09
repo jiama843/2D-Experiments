@@ -26,4 +26,11 @@ public class ProjectileProvider : MonoBehaviour {
 
 	}
 
+	/*public bool isDestructible(){
+
+		projectileController = gameObject.GetComponent<ProjectileController> ();
+		return projectileController.isDestructible ();
+
+	}*/
+
 }

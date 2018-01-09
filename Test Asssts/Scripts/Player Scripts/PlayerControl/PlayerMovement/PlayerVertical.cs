@@ -12,7 +12,7 @@ public class PlayerVertical {
 	private const float GRAVITY = -9.8f;
 
 	private float time = 0.0f;
-	private float maxAirTime = 0.2f * FPS;
+	private float maxAirTime = 0.25f * FPS;
 	private float initialJumpVelocity;
 
 	private float finalYVelocity = 0.0f;
@@ -43,7 +43,7 @@ public class PlayerVertical {
 
 		isGrounded = true;
 		canDoubleJump = false;
-		maxAirTime = 0.5f * FPS;
+		maxAirTime = 0.25f * FPS;
 		time = 0.0f;
 
 		//Debug.Log ("isGrounded is: "+isGrounded+" Expected result: true");

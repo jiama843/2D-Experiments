@@ -32,7 +32,7 @@ public class PlayerShoot {
 
 			Rigidbody2D projectileInstanceRBody = projectileInstance.GetComponent<Rigidbody2D> ();
 
-			Physics2D.IgnoreCollision (projectileInstance.GetComponent<Collider2D> (), playerRBody.GetComponent<Collider2D> ());
+			//Physics2D.IgnoreCollision (projectileInstance.GetComponent<Collider2D> (), playerRBody.GetComponent<Collider2D> ());
 			projectileInstanceRBody.velocity = new Vector2 (shootingSpeed * direction, 0);
 
 		}

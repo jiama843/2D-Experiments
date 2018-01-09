@@ -15,8 +15,12 @@ public class ProjectileReceiver : MonoBehaviour {
 			
 			ProjectileController projectileController = gameObject.GetComponent<ProjectileController> ();
 
-			projectileController.destroyByCollision ();
-
+			if(projectileController.isDestructible()){
+				
+				projectileController.destroyByCollision ();
+			
+			}
+		
 		}
 
 	}

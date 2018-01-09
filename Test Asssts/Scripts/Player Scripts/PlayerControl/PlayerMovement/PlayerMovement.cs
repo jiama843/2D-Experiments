@@ -2,15 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+using Stdlib;
+
 public class PlayerMovement {
 
-	private const float FPS = 60.0f;
+	private GameObject player;
 
-	PlayerHorizontal playerHorizontal;
-	PlayerVertical playerVertical;
+	private PlayerHorizontal playerHorizontal;
+	private PlayerVertical playerVertical;
 
 	// Use this for initialization
 	public PlayerMovement (GameObject player, float speed, float initialJumpVelocity) {
+
+		this.player = player;
 
 		playerHorizontal = new PlayerHorizontal (player, speed);
 		playerVertical = new PlayerVertical(player, initialJumpVelocity);
@@ -19,9 +23,16 @@ public class PlayerMovement {
 
 
 	//Player Horizontal Methods
+	//Called on every update
 	public void move(){
 	
 		playerHorizontal.move ();
+
+		if (Input.GetButtonDown ("Dash")) {
+
+			playerHorizontal.dash (getDirection());
+
+		}
 	
 	}
 
@@ -40,6 +51,20 @@ public class PlayerMovement {
 	public bool isRight(){
 
 		return playerHorizontal.isRight();
+
+	}
+
+	public float getDirection(){
+
+		if (isRight ()) {
+
+			return Direction.RIGHT;
+
+		} else {
+
+			return Direction.LEFT;
+
+		}
 
 	}
 
@@ -78,6 +103,14 @@ public class PlayerMovement {
 	public bool CanDoubleJump(){
 
 		return playerVertical.CanDoubleJump ();
+
+	}
+
+	//Player misc movement methods
+
+	public void knockback(float xSpeed, float ySpeed){
+
+		player.GetComponent<Rigidbody2D> ().velocity = new Vector2 (xSpeed, ySpeed);
 
 	}
 

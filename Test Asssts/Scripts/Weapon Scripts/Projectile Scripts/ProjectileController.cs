@@ -13,6 +13,15 @@ public class ProjectileController : MonoBehaviour {
 	public float lifespan;
 	public float life;
 
+	public bool destructible;
+
+	void awake(){
+
+		QualitySettings.vSyncCount = 0;
+		Application.targetFrameRate = 60;
+
+	}
+
 	void Start () {
 
 		projectile = gameObject;
@@ -39,7 +48,7 @@ public class ProjectileController : MonoBehaviour {
 		}
 
 	}
-
+		
 	//Provider Methods
 	public int getAttack(){
 
@@ -59,6 +68,12 @@ public class ProjectileController : MonoBehaviour {
 
 		weaponStats = gameObject.GetComponent<WeaponStats> ();
 		return weaponStats.getShootingSpeed ();
+
+	}
+
+	public bool isDestructible(){
+
+		return destructible;
 
 	}
 
