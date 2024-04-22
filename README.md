@@ -17,3 +17,9 @@ Alternatives are:
 
 # Dialogue
 Display text using dictionary to represent characters (keys) and text (value). Printing individual characters and manipulating the text update thread allows for more natural looking speech.
+
+## Final Result
+- Something like this:
+
+https://github.com/jiama843/2D-Experiments/assets/24597281/bfeb19bc-e160-4bef-bcb8-887be5c67533
+
